@@ -136,7 +136,7 @@ axios.interceptors.response.use(function (config) {
 */
 function updateProgress(progressEvent) {
     console.log(progressEvent);
-    
+
     const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
 
     progressBar.style.width = `${percentCompleted}%`;
@@ -163,8 +163,10 @@ function updateProgress(progressEvent) {
 export async function favourite(imgId) {
     // your code here
     try {
-        await axios.post("https://api.thecatapi.com/v1/favourites", { image_id: imgId }, {headers: {
-            'x-api-key': API_KEY} 
+        await axios.post("https://api.thecatapi.com/v1/favourites", { image_id: imgId }, {
+            headers: {
+                'x-api-key': API_KEY
+            }
         })
 
         console.log(`Favorited img: ${imgId}`)
